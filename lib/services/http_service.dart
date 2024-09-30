@@ -16,10 +16,31 @@ class HttpService {
     try {
       Response response = await _dio.get(path);
       return response;
-    } catch (e) {
+    } on DioException catch (e) {
       Log.v('Error fetching data: $e');
+      throw _handleException(e);
     }
-    return null;
+  }
+
+  Exception _handleException(DioException e) {
+    switch (e.type) {
+      case DioExceptionType.connectionTimeout:
+        throw Exception('Connection Timeout. Please try again later.');
+      case DioExceptionType.sendTimeout:
+        throw Exception('Send Timeout. Please try again later.');
+      case DioExceptionType.receiveTimeout:
+        throw Exception('Receive Timeout. Please try again later.');
+      case DioExceptionType.badCertificate:
+        throw Exception('Bad Certificate Error.');
+      case DioExceptionType.badResponse:
+        throw Exception('Bad Response.');
+      case DioExceptionType.cancel:
+        throw Exception('Request cancelled. Please try again.');
+      case DioExceptionType.connectionError:
+        throw Exception('Connection Error.');
+      case DioExceptionType.unknown:
+        throw Exception('An unexpected error occurred: $e');
+    }
   }
 }
 
