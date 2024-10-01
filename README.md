@@ -1,16 +1,4 @@
-# easemydeal
+# Flutter Data Fetching and Filtering Task by easemydeal
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Overview
+This Flutter application fetches data from a given API, displays the data in a ListView, and provides filtering options to sort the data by week, date, and month. The app demonstrates effective use of state management and modern Flutter practices.
