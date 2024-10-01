@@ -45,9 +45,9 @@ This Flutter application fetches data from a given API, displays the data in a L
 - Each item is presented using ListTile, showcasing the title, date, and description.
 ### 4. Filtering Functionality
 - Added bottomsheet with checkboxes to filter data by:
- - Week
- - Date
- - Month
+  - Week
+  - Date
+  - Month
 - Implemented logic to dynamically filter and update the displayed data based on user selections.
 5. Bonus Features
 - Incorporated pull-to-refresh functionality to allow users to update data easily.
