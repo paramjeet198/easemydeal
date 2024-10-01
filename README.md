@@ -9,3 +9,10 @@ This Flutter application fetches data from a given API, displays the data in a L
 - **Filtering Options**: Sorts data based on week, date, and month.
 - **State Management**: Utilizes Riverpod for managing app state effectively.
 - **UI Enhancements**: Implements loading indicators and error handling for a smooth user experience.
+
+### API
+- **Data Source**: The application retrieves data from https://ixifly.in/flutter/task1.
+- **Data Format**: The API returns a JSON array of items, where each item contains:
+  - **title**: String
+  - **date**: String (formatted as YYYY-MM-DD)
+  - **description**: String
