@@ -91,3 +91,6 @@ dev_dependencies:
 You can download the APK from the following link:
 
 [Download APK](https://drive.google.com/file/d/1IyeF5iK56R7sEl9SwOTEw9VpLMmFkQNk)
+
+[![Download](https://github.com/paramjeet198/easemydeal/blob/master/download_icon.jpeg)](https://drive.google.com/file/d/1IyeF5iK56R7sEl9SwOTEw9VpLMmFkQNk)
+
