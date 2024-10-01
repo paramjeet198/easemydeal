@@ -20,4 +20,9 @@ class DateFilterModel {
       selectedYears: selectedYears ?? this.selectedYears,
     );
   }
+
+  @override
+  String toString() {
+    return 'DateFilterModel{selectedWeeks: $selectedWeeks, selectedMonths: $selectedMonths, selectedYears: $selectedYears}';
+  }
 }

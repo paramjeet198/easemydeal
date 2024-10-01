@@ -48,6 +48,7 @@ class _FilterBottomSheetContentState
       width: MediaQuery.sizeOf(context).width,
       height: MediaQuery.sizeOf(context).height,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _createHeader(),
           const Divider(height: 0, thickness: .5, indent: 15),
@@ -71,7 +72,36 @@ class _FilterBottomSheetContentState
               ],
             ),
           ),
+          _buildApplyBtn()
         ],
+      ),
+    );
+  }
+
+  Widget _buildApplyBtn() {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10, bottom: 5, right: 15),
+        child: ElevatedButton(
+            style: ButtonStyle(
+                shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10))),
+                elevation: WidgetStateProperty.all(0),
+                backgroundColor:
+                    const WidgetStatePropertyAll(Colors.deepOrange)),
+            onPressed: () {
+              ref.read(eventsProvider.notifier).filterEvents();
+              Navigator.pop(context);
+            },
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                'Apply',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            )),
       ),
     );
   }
@@ -93,16 +123,18 @@ class _FilterBottomSheetContentState
       itemCount: 52,
       shrinkWrap: true,
       itemBuilder: (context, int index) {
+        int week = index + 1; // Adjusting to 1-based index (1 to 52)
+
         return CheckboxListTile(
           contentPadding: EdgeInsets.zero,
           value:
-              ref.watch(filterByDateProvider).selectedWeeks?.contains(index) ??
+              ref.watch(filterByDateProvider).selectedWeeks?.contains(week) ??
                   false,
           dense: true,
           controlAffinity: ListTileControlAffinity.leading,
           title: Text('Week ${index + 1}'),
           onChanged: (value) {
-            ref.read(filterByDateProvider.notifier).toggleWeek(index);
+            ref.read(filterByDateProvider.notifier).toggleWeek(week);
           },
         );
       },
@@ -115,16 +147,18 @@ class _FilterBottomSheetContentState
       itemCount: monthNames.length,
       shrinkWrap: true,
       itemBuilder: (context, int index) {
+        int monthNumber = index + 1; // Adjusting to 1-based index (1 to 12)
+
         return CheckboxListTile(
           contentPadding: EdgeInsets.zero,
           value:
-              ref.watch(filterByDateProvider).selectedMonths?.contains(index) ??
+              ref.watch(filterByDateProvider).selectedMonths?.contains(monthNumber) ??
                   false,
           dense: true,
           controlAffinity: ListTileControlAffinity.leading,
           title: Text(monthNames[index]),
           onChanged: (value) {
-            ref.read(filterByDateProvider.notifier).toggleMonth(index);
+            ref.read(filterByDateProvider.notifier).toggleMonth(monthNumber);
           },
         );
       },
@@ -133,25 +167,27 @@ class _FilterBottomSheetContentState
 
   Widget _createYearDestinationContent() {
     return Expanded(
-        child: ListView.builder(
-      itemCount: years.length,
-      shrinkWrap: true,
-      itemBuilder: (context, int index) {
-        return CheckboxListTile(
-          contentPadding: EdgeInsets.zero,
-          value:
-              ref.watch(filterByDateProvider).selectedYears?.contains(index) ??
-                  false,
-          dense: true,
-          controlAffinity: ListTileControlAffinity.leading,
-          title: Text('${years[index]}'),
-          onChanged: (value) {
-            ref.read(filterByDateProvider.notifier).toggleYear(index);
-
-          },
-        );
-      },
-    ));
+      child: ListView.builder(
+        itemCount: years.length,
+        shrinkWrap: true,
+        itemBuilder: (context, int index) {
+          return CheckboxListTile(
+            contentPadding: EdgeInsets.zero,
+            value: ref
+                    .watch(filterByDateProvider)
+                    .selectedYears
+                    ?.contains(years[index]) ??
+                false,
+            dense: true,
+            controlAffinity: ListTileControlAffinity.leading,
+            title: Text('${years[index]}'),
+            onChanged: (value) {
+              ref.read(filterByDateProvider.notifier).toggleYear(years[index]);
+            },
+          );
+        },
+      ),
+    );
   }
 
   Widget _createHeader() {

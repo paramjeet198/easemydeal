@@ -23,7 +23,6 @@ class Events extends _$Events {
 
   @override
   FutureOr<List<Event>?> build() async {
-    Log.v('Build triggered');
     HttpService httpService = ref.read(httpServicesProvider);
     originalEvents = await _fetchEvenData(httpService);
     return originalEvents;
@@ -46,17 +45,16 @@ class Events extends _$Events {
     }
   }
 
-  ///update the STATE manually.
+  ///Method to sort the events
   Future<void> sortEvents() async {
     SortBy sortBy = ref.read(sortTypeNotifierProvider);
     DateFormat dateFormat = DateFormat('yyyy-M-d');
     List<Event> eventsToSort = [];
+
     // Check if we have a filtered list in the state; if not, use the original events
     if (state.value == null || state.value!.isEmpty) {
-      Log.v('if');
       eventsToSort = originalEvents ?? [];
     } else {
-      Log.v('else');
       eventsToSort = state.value ?? [];
     }
 
@@ -102,31 +100,39 @@ class Events extends _$Events {
     }
 
     // Update the state with the sorted list
-    state = AsyncData([...eventsToSort]); // This updates the sorted events
+    state = AsyncData([...eventsToSort]);
   }
 
   ///Filter
-  /*Future<void> filterEvents() async {
-    final filter = ref.read(filterByDateProvider);
+  Future<void> filterEvents() async {
+    DateFilterModel filter = ref.read(filterByDateProvider);
     DateFormat dateFormat = Utils.apiDateFormatter();
 
     final events = originalEvents ?? [];
     Log.v('event: ${events.length}');
+    Log.v('filter: ${filter.toString()}');
 
     List<Event> filteredEvents = events.where((event) {
       DateTime eventDate = dateFormat.parse(event.date!);
+      Log.v(
+          'Event Date: Year: ${eventDate.year} Month: ${eventDate.month}, Week: ${eventDate.weekday}');
+      Log.v(
+          'Selected Date: Year: ${filter.selectedYears} Month: ${filter.selectedMonths}, Week: ${filter.selectedWeeks}');
 
-      bool matchesYear = filter.year == null || eventDate.year == filter.year;
-      bool matchesMonth =
-          filter.month == null || eventDate.month == filter.month;
-      bool matchesWeek =
-          filter.week == null || eventDate.weekday == filter.week;
+      bool matchesYear = filter.selectedYears?.contains(eventDate.year) ??
+          true; // Check if year is in set
+      bool matchesMonth = filter.selectedMonths?.contains(eventDate.month) ??
+          true; // Check if month is in set
+      bool matchesWeek = filter.selectedWeeks?.contains(eventDate.weekday) ??
+          true; // Check if week is in set
 
       return matchesYear && matchesMonth && matchesWeek;
     }).toList();
 
+    Log.v('filteredEvents: ${filteredEvents.length}');
+
     state = AsyncData([...filteredEvents]);
-  }*/
+  }
 
   ///Reset Filters....
   void removeFilter() {
@@ -174,8 +180,8 @@ class FilterByDate extends _$FilterByDate {
     }
 
     state = state.copyWith(
-      selectedWeeks: updatedWeeks, // Update only the selected weeks
-    );
+        selectedWeeks:
+            updatedWeeks); // this will assign a new instance of DateFilterModel due to immutability
   }
 
   void toggleMonth(int month) {
@@ -187,9 +193,7 @@ class FilterByDate extends _$FilterByDate {
       updatedMonths.add(month); // Select the month
     }
 
-    state = state.copyWith(
-      selectedMonths: updatedMonths, // Update only the selected weeks
-    );
+    state = state.copyWith(selectedMonths: updatedMonths);
   }
 
   void toggleYear(int year) {
@@ -213,6 +217,5 @@ class FilterByDate extends _$FilterByDate {
     );
 
     state = DateFilterModel();
-
   }
 }
