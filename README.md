@@ -52,3 +52,25 @@ This Flutter application fetches data from a given API, displays the data in a L
 5. Bonus Features
 - Incorporated pull-to-refresh functionality to allow users to update data easily.
 - Managed loading and error states with visual feedback using shimmer effects.
+
+### Libraries Used
+```
+dependencies:
+  dio: ^5.7.0                       # HTTP client for making API requests
+  logger: ^2.4.0                    # Logger for debugging
+  skeletonizer: ^1.4.2              # Shimmer effect for loading state
+  google_fonts: ^6.2.1              # Google Fonts for typography
+  flutter_riverpod: ^2.5.1          # State management
+  riverpod_annotation: ^2.3.5
+  intl: ^0.19.0                     # Date formatting and manipulation
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:                     # Code generation
+  custom_lint:                     # Linting rules
+  riverpod_generator: ^2.4.3       # Code generation for Riverpod
+  riverpod_lint: ^2.3.13           # Linting for Riverpod
+
+```
+
