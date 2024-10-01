@@ -37,18 +37,18 @@ This Flutter application fetches data from a given API, displays the data in a L
 - Created a new Flutter project.
 - Added dependencies for HTTP requests, date handling, and state management.
 ### 2. API Integration
-Developed a Dart model class to represent the data structure.
-Implemented data fetching using the dio package to handle API requests.
-Parsed the fetched data and stored it in a list.
+- Developed a Dart model class to represent the data structure.
+- Implemented data fetching using the dio package to handle API requests.
+- Parsed the fetched data and stored it in a list.
 ### 3. ListView Display
-Used a ListView to display the list of events.
-Each item is presented using ListTile, showcasing the title, date, and description.
+- Used a ListView to display the list of events.
+- Each item is presented using ListTile, showcasing the title, date, and description.
 ### 4. Filtering Functionality
-Added dropdowns to filter data by:
-Week
-Date
-Month
-Implemented logic to dynamically filter and update the displayed data based on user selections.
+- Added dropdowns to filter data by:
+  Week
+  Date
+  Month
+- Implemented logic to dynamically filter and update the displayed data based on user selections.
 5. Bonus Features
-Incorporated pull-to-refresh functionality to allow users to update data easily.
-Managed loading and error states with visual feedback using shimmer effects.
+- Incorporated pull-to-refresh functionality to allow users to update data easily.
+- Managed loading and error states with visual feedback using shimmer effects.
