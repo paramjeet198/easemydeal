@@ -34,8 +34,8 @@ This Flutter application fetches data from a given API, displays the data in a L
 
 ### Implementation Steps
 ### 1. Setup
-Created a new Flutter project.
-Added dependencies for HTTP requests, date handling, and state management.
+- Created a new Flutter project.
+- Added dependencies for HTTP requests, date handling, and state management.
 ### 2. API Integration
 Developed a Dart model class to represent the data structure.
 Implemented data fetching using the dio package to handle API requests.
