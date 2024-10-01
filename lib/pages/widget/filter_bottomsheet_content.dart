@@ -72,7 +72,13 @@ class _FilterBottomSheetContentState
               ],
             ),
           ),
-          _buildApplyBtn()
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildClearBtn(),
+              _buildApplyBtn(),
+            ],
+          )
         ],
       ),
     );
@@ -88,8 +94,7 @@ class _FilterBottomSheetContentState
                 shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10))),
                 elevation: WidgetStateProperty.all(0),
-                backgroundColor:
-                    const WidgetStatePropertyAll(Colors.deepOrange)),
+                backgroundColor: const WidgetStatePropertyAll(Colors.green)),
             onPressed: () {
               ref.read(eventsProvider.notifier).filterEvents();
               Navigator.pop(context);
@@ -98,6 +103,32 @@ class _FilterBottomSheetContentState
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 'Apply',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            )),
+      ),
+    );
+  }
+
+  Widget _buildClearBtn() {
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10, bottom: 5, right: 15),
+        child: ElevatedButton(
+            style: ButtonStyle(
+                shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10))),
+                elevation: WidgetStateProperty.all(0),
+                backgroundColor: WidgetStatePropertyAll(Colors.redAccent[400])),
+            onPressed: () {
+              ref.read(filterByDateProvider.notifier).resetFilters();
+            },
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              child: Text(
+                'Clear Filters',
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
@@ -151,9 +182,11 @@ class _FilterBottomSheetContentState
 
         return CheckboxListTile(
           contentPadding: EdgeInsets.zero,
-          value:
-              ref.watch(filterByDateProvider).selectedMonths?.contains(monthNumber) ??
-                  false,
+          value: ref
+                  .watch(filterByDateProvider)
+                  .selectedMonths
+                  ?.contains(monthNumber) ??
+              false,
           dense: true,
           controlAffinity: ListTileControlAffinity.leading,
           title: Text(monthNames[index]),

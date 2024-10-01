@@ -31,9 +31,11 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   Future<void> _handleRefresh() async {
     ref.invalidate(eventsProvider);
-    ref.read(sortTypeNotifierProvider.notifier).update(SortBy.none);
-    // ref.read(filterByDateProvider.notifier).reset;
     ref.invalidate(filterByDateProvider);
+    ref.invalidate(sortTypeNotifierProvider);
+
+    //   ref.read(sortTypeNotifierProvider.notifier).update(SortBy.none);
+    //     ref.read(filterByDateProvider.notifier).resetFilters();
   }
 
   List<Widget> _createActions(BuildContext context) {

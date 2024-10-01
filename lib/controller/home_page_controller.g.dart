@@ -6,7 +6,7 @@ part of 'home_page_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$eventsHash() => r'44ffc1bb79b5a3120939daefe3877df0ce3a5b2a';
+String _$eventsHash() => r'4d40bb3b83ba6d31c9f1ebe24d1b92177761aff7';
 
 /// This will generate the "eventsProvider" with return type [List<Event>?]
 /// It fetch data from API and return the same.
@@ -41,7 +41,7 @@ final sortTypeNotifierProvider =
 );
 
 typedef _$SortTypeNotifier = Notifier<SortBy>;
-String _$filterByDateHash() => r'64c2ae0bf1af4934d4d14c07d5e163af5f6ed298';
+String _$filterByDateHash() => r'f8d4c2a0905882acfe6131169e886cc5a6c4b028';
 
 /// Filter Notifier
 ///

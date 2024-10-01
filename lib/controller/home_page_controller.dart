@@ -123,7 +123,11 @@ class Events extends _$Events {
           true; // Check if year is in set
       bool matchesMonth = filter.selectedMonths?.contains(eventDate.month) ??
           true; // Check if month is in set
-      bool matchesWeek = filter.selectedWeeks?.contains(eventDate.weekday) ??
+
+
+      int weekNumber = (eventDate.day + (eventDate.month - 1) * 30) ~/ 7;
+      Log.v('Week Number: $weekNumber');
+      bool matchesWeek = filter.selectedWeeks?.contains(weekNumber + 1) ??
           true; // Check if week is in set
 
       return matchesYear && matchesMonth && matchesWeek;
@@ -132,19 +136,6 @@ class Events extends _$Events {
     Log.v('filteredEvents: ${filteredEvents.length}');
 
     state = AsyncData([...filteredEvents]);
-  }
-
-  ///Reset Filters....
-  void removeFilter() {
-    DateFilterModel filterModel = ref.read(filterByDateProvider);
-
-    // Check if filters are null (indicating no filters applied)
-    if (filterModel.selectedWeeks == null &&
-        filterModel.selectedMonths == null &&
-        filterModel.selectedYears == null) {
-      state = AsyncData([...originalEvents!]); // Reset to original events
-      return;
-    }
   }
 }
 
@@ -209,7 +200,7 @@ class FilterByDate extends _$FilterByDate {
   }
 
   // Reset all selections to empty
-  void reset() {
+  void resetFilters() {
     state = state.copyWith(
       selectedWeeks: {},
       selectedMonths: {},
