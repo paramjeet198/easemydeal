@@ -9,7 +9,6 @@ import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../models/date_filter_model.dart';
-import '../models/date_sorting_model.dart';
 import '../models/event_response.dart';
 import '../pages/widget/shorting_bottomsheet_content.dart';
 
@@ -124,7 +123,6 @@ class Events extends _$Events {
       bool matchesMonth = filter.selectedMonths?.contains(eventDate.month) ??
           true; // Check if month is in set
 
-
       int weekNumber = (eventDate.day + (eventDate.month - 1) * 30) ~/ 7;
       Log.v('Week Number: $weekNumber');
       bool matchesWeek = filter.selectedWeeks?.contains(weekNumber + 1) ??
@@ -136,6 +134,14 @@ class Events extends _$Events {
     Log.v('filteredEvents: ${filteredEvents.length}');
 
     state = AsyncData([...filteredEvents]);
+  }
+
+  Future<void> refresh() async {
+    Log.v('Refreshing...');
+    state = const AsyncValue.loading();
+    ref.invalidateSelf();
+    var result = await future;
+    state = AsyncValue.data(result);
   }
 }
 

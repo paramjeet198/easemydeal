@@ -6,11 +6,11 @@ class Log {
 
   Log._internal();
 
-  static var logger = Logger(printer: PrettyPrinter());
+  static final _logger = Logger(printer: PrettyPrinter());
 
   static void v(dynamic data) {
     if (kDebugMode) {
-      logger.d(data);
+      _logger.d(data);
     }
   }
 }

@@ -30,7 +30,8 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   Future<void> _handleRefresh() async {
-    ref.invalidate(eventsProvider);
+    // ref.invalidate(eventsProvider);
+    ref.read(eventsProvider.notifier).refresh();
     ref.invalidate(filterByDateProvider);
     ref.invalidate(sortTypeNotifierProvider);
 
@@ -52,10 +53,6 @@ class _HomePageState extends ConsumerState<HomePage> {
                 },
               ),
             );
-            // ref
-            //     .read(filterByDateProvider.notifier)
-            //     .update(year: 2024, month: 11);
-            // ref.read(eventsProvider.notifier).filterEvents();
           },
           icon: const Icon(Icons.filter_alt_rounded)),
 
@@ -101,6 +98,15 @@ class _HomePageState extends ConsumerState<HomePage> {
 
     return events.when(
       data: (data) {
+        if (data != null && data.isEmpty) {
+          return const SizedBox(
+            height: 600,
+            child: Center(
+              child: Text('O O P S . . .\nNothing Found',
+                  style: TextStyle(fontSize: 18)),
+            ),
+          );
+        }
         return _buildEventList(context, false, data);
       },
       error: (error, stackTrace) => _showErrorMsg(context, error),

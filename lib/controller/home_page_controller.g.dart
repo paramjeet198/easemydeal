@@ -6,7 +6,7 @@ part of 'home_page_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$eventsHash() => r'4d40bb3b83ba6d31c9f1ebe24d1b92177761aff7';
+String _$eventsHash() => r'6bfcdb47e995bd41feaf8711ad25d2a46d4384c5';
 
 /// This will generate the "eventsProvider" with return type [List<Event>?]
 /// It fetch data from API and return the same.
