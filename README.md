@@ -87,3 +87,7 @@ dev_dependencies:
   <img src="https://github.com/paramjeet198/easemydeal/blob/master/sorting.jpg" width="300" height="500" alt="Sorting bottomsheet"/>
 </p>
 
+### APK Download
+You can download the APK from the following link:
+
+[Download APK](https://drive.google.com/file/d/1IyeF5iK56R7sEl9SwOTEw9VpLMmFkQNk)
