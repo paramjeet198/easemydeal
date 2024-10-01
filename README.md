@@ -83,10 +83,10 @@ dev_dependencies:
 - Sorting bottomsheet
 
 <p float="left">
-  <img src="https://github.com/paramjeet198/easemydeal/blob/master/list.jpg" width="300" height="500"  alt="List Screen"/>
-  <img src="https://github.com/paramjeet198/easemydeal/blob/master/loading.jpg" width="300" height="500" alt="Loading State"/>
-  <img src="https://github.com/paramjeet198/easemydeal/blob/master/filters.jpg" width="300" height="500" alt="Filters bottomsheet"/>
-  <img src="https://github.com/paramjeet198/easemydeal/blob/master/sorting.jpg" width="300" height="500" alt="Sorting bottomsheet"/>
+  <img src="https://github.com/paramjeet198/easemydeal/blob/master/list.jpg" width="300" height="600"  alt="List Screen"/>
+  <img src="https://github.com/paramjeet198/easemydeal/blob/master/loading.jpg" width="300" height="600" alt="Loading State"/>
+  <img src="https://github.com/paramjeet198/easemydeal/blob/master/filters.jpg" width="300" height="600" alt="Filters bottomsheet"/>
+  <img src="https://github.com/paramjeet198/easemydeal/blob/master/sorting.jpg" width="300" height="600" alt="Sorting bottomsheet"/>
 </p>
 
 ### APK Download
