@@ -6,9 +6,11 @@ This Flutter application fetches data from a given API, displays the data in a L
 ### Features
 - **API Integration**: Fetches data from the specified API.
 - **Data Display**: Presents fetched data in a clean and responsive ListView.
-- **Filtering Options**: Sorts data based on week, date, and month.
+- **Filtering Options**: Filter data based on week, date, and month.
+- **Sorting Options**: Sort data based on week, date, and month.
 - **State Management**: Utilizes Riverpod for managing app state effectively.
 - **UI Enhancements**: Implements loading indicators and error handling for a smooth user experience.
+- **Swipe to refresh**: This action will refetch data from the api and remove all filters.
 
 ### API
 - **Data Source**: The application retrieves data from https://ixifly.in/flutter/task1.
