@@ -74,5 +74,16 @@ dev_dependencies:
 
 ```
 
+### Screenshots
+- List Screen
+- Loading State
+- Filters bottomsheet
+- Sorting bottomsheet
 
+<p float="left">
+  <img src="https://github.com/paramjeet198/easemydeal/blob/master/list.jpg" width="300"  alt="List Screen"/>
+  <img src="https://github.com/paramjeet198/easemydeal/blob/master/loading.jpg" width="300"  alt="Loading State"/>
+  <img src="https://github.com/paramjeet198/easemydeal/blob/master/filters.jpg" width="300"  alt="Filters bottomsheet"/>
+  <img src="https://github.com/paramjeet198/easemydeal/blob/master/sorting.jpg" width="300"  alt="Sorting bottomsheet"/>
+</p>
 
