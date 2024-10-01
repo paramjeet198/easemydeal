@@ -123,6 +123,7 @@ class Events extends _$Events {
       bool matchesMonth = filter.selectedMonths?.contains(eventDate.month) ??
           true; // Check if month is in set
 
+      /// Rough week calculation for filtering
       int weekNumber = (eventDate.day + (eventDate.month - 1) * 30) ~/ 7;
       Log.v('Week Number: $weekNumber');
       bool matchesWeek = filter.selectedWeeks?.contains(weekNumber + 1) ??
