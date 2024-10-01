@@ -16,3 +16,18 @@ This Flutter application fetches data from a given API, displays the data in a L
   - **title**: String
   - **date**: String (formatted as YYYY-MM-DD)
   - **description**: String
+
+```
+[
+  {
+    "title": "Event 1",
+    "date": "2024-06-01",
+    "description": "Description for Event 1"
+  },
+  {
+    "title": "Event 2",
+    "date": "2024-06-03",
+    "description": "Description for Event 2"
+  }
+]
+```
